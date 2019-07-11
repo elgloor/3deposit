@@ -9,7 +9,7 @@ services:
     container_name: deposit-form
     command: npm run serve
     labels:
-      - "traefik.frontend.rule=Host:3deposit.library.illinois.edu"
+      - "traefik.frontend.rule=Host:form.3deposit.localhost"
       - "traefik.backend=deposit-form"
       - "traefik.port=8080"
       - "traefik.docker.network=proxy"
@@ -31,7 +31,7 @@ services:
     container_name: admin
     command: npm run serve
     labels:
-      - "traefik.frontend.rule=Host:admin.3deposit.library.illinois.edu"
+      - "traefik.frontend.rule=Host:admin.3deposit.localhost"
       - "traefik.backend=admin"
       - "traefik.port=8080"
       - "traefik.docker.network=proxy"
@@ -49,7 +49,7 @@ services:
       command: bash -c "pipenv run python init_db.py && pipenv run python gateway.py"
       # command: bash -c "pipenv run python gateway.py"
       labels:
-        - "traefik.frontend.rule=Host:api.3deposit.library.illinois.edu"
+        - "traefik.frontend.rule=Host:api.3deposit.localhost"
         - "traefik.backend=gateway"
         - "traefik.port=8080"
         - "traefik.docker.network=proxy"
